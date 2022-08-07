@@ -1,0 +1,76 @@
+:root{
+
+    /* Color */
+    --white-color: #fff;
+    --black-color: #000;
+    --text-color: #333;
+    
+    --first-color: hsl(142, 69%, 61%);
+    --first-color-alt: hsl(142, 57%, 53%);
+    --first-color-lighten: hsl(142, 92%, 85%);
+    --title-color: hsl(142, 8%, 15%);
+    --text-color: hsl(142, 8%, 45%);
+    --text-color-light: hsl(142, 8%, 65%);
+    --input-color: hsl(142, 70%, 96%);
+
+}
+
+*{ box-sizing: border-box }
+
+/* Reset CSS */
+
+html { 
+    line-height: 1.6rem;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0 0 0 0;
+    font-size: 0.938em;
+    background-color: hsl(142, 60%, 99%);
+    color: hsl(142, 8%, 45%);
+}
+  
+h1, h2, h3, h4 {
+    color: var(--title-color);
+    font-weight: 600;
+}
+  
+ul {
+    list-style: none;
+}
+  
+a {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+  
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+
+
+
+/* Keyframes */
+
+@keyframes fadeInLeft {
+    from {
+        opacity: .5;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    } 
+}
+
+
+
+  
