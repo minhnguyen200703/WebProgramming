@@ -19,7 +19,7 @@ function mouseOver() {
 }
 
 function mouseOut() {
-    if (avtBlock.src == "http://127.0.0.1:5500/asset/img/mock_avt2.png") {
+    if (avtBlock.src == "../asset/img/mock_avt2.png") {
         return false
     }
     cameraIcon.style.display = "none"
