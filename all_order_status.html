@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders Status</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Hachi+Maru+Pop&family=Hubballi&family=Inter:wght@300;400;500;600;700;800&family=Kalam:wght@700&family=Montserrat:wght@254&family=Open+Sans:wght@326;379&family=Permanent+Marker&family=Poppins:wght@100&family=Roboto:wght@300;400;700&family=Rubik+Glitch&display=swap');
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/shipper.css">
+</head>
+<body>
+    <header>
+        <div class="brand">
+            <img src="assets/img/logo.png" alt="" class="brand__logo">
+            <p class="brand__text">Zalada</p>
+        </div>
+        <nav>
+            <ul class="nav_pc_container">
+                <li class="nav_pc_item">
+                    <a href="#" class="nav_pc_item__link">About</a>
+                </li>
+                <li class="nav_pc_item">
+                    <a href="#" class="nav_pc_item__link">Policies</a>
+                </li>
+                <li class="nav_pc_item">
+                    <a href="#" class="nav_pc_item__link">Help</a>
+                </li>
+                <li class="nav_pc_item">
+                    <a href="#" class="nav_pc_item__link">Contact</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="shipper__profile">
+            <!-- profile: can be clicked on-->
+            <img src="avatar.png" alt="Avatar" class="avatar">
+        </div>
+        <!-- second nav bar -->
+        <nav class="shipper_sidebar">
+            <ul>
+                <li>
+                    <img src="avatar.png" alt="Avatar" class="avatar">
+                </li>
+                <li>
+                    <a href="#">icon</a>
+                </li>
+                <li>
+                    <a href="#">icon</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- profile, greeting and filer holder -->
+        <div class="shipper_content">
+            <!-- uninteractive profile, just for displaying -->
+            <div>
+                <img src="avatar.png" alt="Avatar" class="avatar">
+            </div>
+            <div>
+                <h2> Welcome to your Orders Status</h2>
+            </div>
+            <div>
+                <p>filter</p>
+            </div>
+        </div>
+        <!-- main section -->
+        <div>
+            <div>
+                <table>
+                    <!-- <tr>
+                        <th>Order No.</th>
+                        <th>Order item id.</th>
+                        <th>Unit Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>A pack of 4 Spoons</td>
+                        <td>20</td>
+                        <td>10</td>
+                        <td>80</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Cute bunny socks</td>
+                        <td>60</td>
+                        <td>2</td>
+                        <td>120</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Bunny Glasses</td>
+                        <td>100</td>
+                        <td>1</td>
+                        <td>100</td>
+                    </tr> -->
+                    <tr>
+                        <th>Order No.</th>
+                        <th>Order item id.</th>
+                        <th>Item Name</th>
+                        <th>Shipping Status</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>100</td>
+                        <td>A pack of 4 Spoons</td>
+                        <td><img src="./assets/img/check_mark.png" alt="checkmarkicon" class="shipper__icon"></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>200</td>
+                        <td>Cute bunny socks</td>
+                        <td><img src="./assets/img/check_mark.png" alt="checkmarkicon" class="shipper__icon"></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>300</td>
+                        <td>Bunny Glasses</td>
+                        <td><img src="./assets/img/red_mark.png" alt="crossmarkicon" class="shipper__icon"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
