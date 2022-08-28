@@ -4,42 +4,204 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Orders Details</title>
+    <title>Update Orders</title>
+    <script src="./assets/js/table.js"></script>
+    
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Hachi+Maru+Pop&family=Hubballi&family=Inter:wght@300;400;500;600;700;800&family=Kalam:wght@700&family=Montserrat:wght@254&family=Open+Sans:wght@326;379&family=Permanent+Marker&family=Poppins:wght@100&family=Roboto:wght@300;400;700&family=Rubik+Glitch&display=swap');
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="assets/css/base.css">
-    <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/shipper.css">
 </head>
 <body>
-    <header>
-        <div class="brand">
-            <img src="assets/img/logo.png" alt="" class="brand__logo">
+    
+    <header class="shipper_header">
+        <!-- <img src="assets/img/shipper_registration.png" alt="shipper header" class="shipper_header"> -->
+        <!-- <div>
+            <a href="index.html" class="back_btn"  id="shipper_back_btn"><i class="fa-solid fa-chevron-left"></i>Back</a>
+        </div> -->
+        <div class="shipper_banner">
+        <div class="shipper_brand">
+            <img src="./assets/img/logo.png" alt="" class="brand__logo">
             <p class="brand__text">Zalada</p>
         </div>
-        <nav>
-            <ul class="nav_pc_container">
-                <li class="nav_pc_item">
-                    <a href="#" class="nav_pc_item__link">About</a>
-                </li>
-                <li class="nav_pc_item">
-                    <a href="#" class="nav_pc_item__link">Policies</a>
-                </li>
-                <li class="nav_pc_item">
-                    <a href="#" class="nav_pc_item__link">Help</a>
-                </li>
-                <li class="nav_pc_item">
-                    <a href="#" class="nav_pc_item__link">Contact</a>
-                </li>
-            </ul>
-        </nav>
+        <div>
+            <h2>UPDATE ORDERS</h2>
+        </div>
+        <div class="shipper_banner_item shipper_account_link">
+            <a href="#"><img src="./assets/img/shipper_profile.jpg" alt="Avatar" class="shipper_profile__img"></a>
+            <a href="#" class="shipper_account_link"><p>My Account</p></a>
+        </div>
+    </div>
     </header>
-    <main>
-        
+    <main class="content_wrap">
 
+        <div>
+            <!-- second nav bar -->
+            <nav class="shipper_sidebar wrapper">
+                <ul>
+                    <li>
+                       <a href="index.html"><i class="fas fa-home"></i>
+                         <div class="tooltip">home</div>
+                       </a>
+                    </li>
+                 
+                    <li>
+                      <a href="#"><i class="fas fa-user"></i>
+                         <div class="tooltip">profile</div>
+                      </a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fas fa-bullhorn"></i>
+                           <div class="tooltip">Notification</div>
+                        </a>
+                      </li>
+                    <li>
+                        <a href="#"><i class="fas fa-search"></i>
+                          <div class="tooltip">search</div>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#"><i class="fas fa-edit"></i>
+                          <div class="tooltip">Update</div>
+                        </a>
+                      </li>
+
+                    </ul>
+            </nav>
+
+
+            <!-- profile, greeting and filer holder -->
+
+            <div class="shipper_content">
+                <div class="shipper__heading">
+                    <!-- uninteractive profile, just for displaying -->
+
+                </div>
+                <!-- main section -->
+                <div class="shipper_content__table">
+                    <table class="shipper__table">
+                        <tr>
+                            <th>Order No.</th>
+                            <th>Order item id.</th>
+                            <th>Item Name</th>
+                            <th>Address</th>
+                            <th>Customer</th>
+                            <th>Shipping Status</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>100</td>
+                            <td>A pack of 4 Spoons</td>
+                            <td>100 Ba Hat Street Ward 4 District 10</td>
+                            <td>A</td>
+                            <td><img src="./assets/img/check_mark.png" alt="checkmarkicon" class="shipper__icon"></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>200</td>
+                            <td>Cute bunny socks</td>
+                            <td>28/9 Blah Blah Street Ward 10 District Tan Binh</td>
+                            <td>B</td>
+                            <td><img src="./assets/img/pending-icon.png" alt="pendingicon" class="shipper__icon"></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>300</td>
+                            <td>Bunny Glasses</td>
+                            <td>A/19 Blah Blah Street Ward 1 District 7</td>
+                            <td>C</td>
+                            <td><img src="./assets/img/red_mark.png" alt="crossmarkicon" class="shipper__icon"></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>300</td>
+                            <td>Bunny Glasses</td>
+                            <td>A/19 Blah Blah Street Ward 1 District 7</td>
+                            <td>C</td>
+                            <td><img src="./assets/img/red_mark.png" alt="crossmarkicon" class="shipper__icon"></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>300</td>
+                            <td>Bunny Glasses</td>
+                            <td>A/19 Blah Blah Street Ward 1 District 7</td>
+                            <td>C</td>
+                            <td><img src="./assets/img/red_mark.png" alt="crossmarkicon" class="shipper__icon"></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>300</td>
+                            <td>Bunny Glasses</td>
+                            <td>A/19 Blah Blah Street Ward 1 District 7</td>
+                            <td>C</td>
+                            <td><img src="./assets/img/red_mark.png" alt="crossmarkicon" class="shipper__icon"></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>300</td>
+                            <td>Bunny Glasses</td>
+                            <td>A/19 Blah Blah Street Ward 1 District 7</td>
+                            <td>C</td>
+                            <td><img src="./assets/img/red_mark.png" alt="crossmarkicon" class="shipper__icon"></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>300</td>
+                            <td>Bunny Glasses</td>
+                            <td>A/19 Blah Blah Street Ward 1 District 7</td>
+                            <td>C</td>
+                            <td><img src="./assets/img/red_mark.png" alt="crossmarkicon" class="shipper__icon"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" id="new_no"></td>
+                            <td><input type="text" id="new_id"></td>
+                            <td><input type="text" id="new_name"></td>
+                            <td><input type="text" id="new_address"></td>
+                            <td><input type="text" id="new_customer"></td>
+                            <td><form action="/action_page.php">
+                                <select name="status" id="new_status">
+                                  <option value="finish">On Delivery</option>
+                                  <option value="ondelivery">Done</option>
+                                  <option value="cancel">Cancel</option>
+                                </select>
+                              </form>
+                                <!-- <input type="text" id="new_status"></td> -->
+                            <td><input type="button" class="add" onclick="add_row();" value="Add Row"></td>
+                            </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
     </main>
+    <footer>
+        <!-- <div class="shipper_footer"> -->
+            <div class="brand">
+                <img src="./assets/img/logo.png" alt="" class="brand__logo">
+                <p class="brand__text">Zalada</p>
+            </div>
+            <nav>
+                <ul class="nav_pc_container">
+                    <li class="nav_pc_item">
+                        <a href="#" class="nav_pc_item__link">About</a>
+                    </li>
+                    <li class="nav_pc_item">
+                        <a href="#" class="nav_pc_item__link">Policies</a>
+                    </li>
+                    <li class="nav_pc_item">
+                        <a href="#" class="nav_pc_item__link">Help</a>
+                    </li>
+                    <li class="nav_pc_item">
+                        <a href="#" class="nav_pc_item__link">Contact</a>
+                    </li>
+                </ul>
+            </nav>
+        <!-- </div> -->
+        <div>
+            <p>©2022 Group 7</p>
+        </div>
 
+    </footer>
 </body>
 </html>
