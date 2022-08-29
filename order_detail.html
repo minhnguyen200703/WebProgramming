@@ -5,8 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Update Orders</title>
-    <script src="./assets/js/table.js"></script>
-    
+    <script type="text/javascript" src="./assets/js/table.js"></script>
+    <script src="./assets/js/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Hachi+Maru+Pop&family=Hubballi&family=Inter:wght@300;400;500;600;700;800&family=Kalam:wght@700&family=Montserrat:wght@254&family=Open+Sans:wght@326;379&family=Permanent+Marker&family=Poppins:wght@100&family=Roboto:wght@300;400;700&family=Rubik+Glitch&display=swap');
     </style>
@@ -63,8 +65,8 @@
                         </a>
                       </li>
                       <li>
-                        <a href="#"><i class="fas fa-edit"></i>
-                          <div class="tooltip">Update</div>
+                        <a href="all_order_status.html"><i class="fas fa-server"></i>
+                          <div class="tooltip">All Orders</div>
                         </a>
                       </li>
 
@@ -81,7 +83,7 @@
                 </div>
                 <!-- main section -->
                 <div class="shipper_content__table">
-                    <table class="shipper__table">
+                    <table class="shipper__table" id="data_table">
                         <tr>
                             <th>Order No.</th>
                             <th>Order item id.</th>
@@ -90,13 +92,18 @@
                             <th>Customer</th>
                             <th>Shipping Status</th>
                         </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>100</td>
-                            <td>A pack of 4 Spoons</td>
-                            <td>100 Ba Hat Street Ward 4 District 10</td>
-                            <td>A</td>
-                            <td><img src="./assets/img/check_mark.png" alt="checkmarkicon" class="shipper__icon"></td>
+                        <tr id="row1">
+                            <td id="non_row1">1</td>
+                            <td id="id_row1">100</td>
+                            <td  id="name_row1">A pack of 4 Spoons</td>
+                            <td id="address_row1">100 Ba Hat Street Ward 4 District 10</td>
+                            <td id="customer_row1">A</td>
+                            <td id="status_row1"><img src="./assets/img/check_mark.png" alt="checkmarkicon" class="shipper__icon"></td>
+                            <td>
+                                <input type="button" id="edit_button1" value="Edit" class="edit" onclick="edit_row('1')">
+                                <input type="button" id="save_button1" value="Save" class="save" onclick="save_row('1')">
+                                <input type="button" value="Delete" class="delete" onclick="delete_row('1')">
+                                </td>
                         </tr>
                         <tr>
                             <td>2</td>
@@ -115,53 +122,13 @@
                             <td><img src="./assets/img/red_mark.png" alt="crossmarkicon" class="shipper__icon"></td>
                         </tr>
                         <tr>
-                            <td>3</td>
-                            <td>300</td>
-                            <td>Bunny Glasses</td>
-                            <td>A/19 Blah Blah Street Ward 1 District 7</td>
-                            <td>C</td>
-                            <td><img src="./assets/img/red_mark.png" alt="crossmarkicon" class="shipper__icon"></td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>300</td>
-                            <td>Bunny Glasses</td>
-                            <td>A/19 Blah Blah Street Ward 1 District 7</td>
-                            <td>C</td>
-                            <td><img src="./assets/img/red_mark.png" alt="crossmarkicon" class="shipper__icon"></td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>300</td>
-                            <td>Bunny Glasses</td>
-                            <td>A/19 Blah Blah Street Ward 1 District 7</td>
-                            <td>C</td>
-                            <td><img src="./assets/img/red_mark.png" alt="crossmarkicon" class="shipper__icon"></td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>300</td>
-                            <td>Bunny Glasses</td>
-                            <td>A/19 Blah Blah Street Ward 1 District 7</td>
-                            <td>C</td>
-                            <td><img src="./assets/img/red_mark.png" alt="crossmarkicon" class="shipper__icon"></td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>300</td>
-                            <td>Bunny Glasses</td>
-                            <td>A/19 Blah Blah Street Ward 1 District 7</td>
-                            <td>C</td>
-                            <td><img src="./assets/img/red_mark.png" alt="crossmarkicon" class="shipper__icon"></td>
-                        </tr>
-                        <tr>
                             <td><input type="text" id="new_no"></td>
                             <td><input type="text" id="new_id"></td>
                             <td><input type="text" id="new_name"></td>
                             <td><input type="text" id="new_address"></td>
                             <td><input type="text" id="new_customer"></td>
-                            <td><form action="/action_page.php">
-                                <select name="status" id="new_status">
+                            <td><form action="/action_page.php"  id="new_status">
+                                <select name="status">
                                   <option value="finish">On Delivery</option>
                                   <option value="ondelivery">Done</option>
                                   <option value="cancel">Cancel</option>
