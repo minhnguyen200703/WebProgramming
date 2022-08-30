@@ -34,6 +34,7 @@ nav {
 .nav_pc_container {
     display: flex;
     justify-content: flex-end;
+    align-items: center;
 }
 
 .nav_pc_item__link {
@@ -46,8 +47,17 @@ nav {
     font-weight: 600;
 }
 
-.nav_pc_item__link:hover {
+.nav_pc_item__link:hover,
+.nav_pc_item__profile:hover {
     opacity: 0.7;
+}
+
+.nav_pc_item__profile {
+    padding: 20px 30px;
+}
+
+.nav_pc_item__profile img {
+    width: 35px;
 }
 
 /* Main content */
@@ -273,3 +283,9 @@ input[type="password"] {
     font-size: 1.5rem;
     border-radius: 2px;
 }
+
+ .no_product {
+    font-size: 40px;
+    font-weight: 700;
+    text-align: center;
+ }

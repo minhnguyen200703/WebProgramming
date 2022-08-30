@@ -54,6 +54,10 @@ img {
     height: auto;
 }
 
+input {
+    all: unset;
+}
+
 /* Buttons  */
 .btn-s-size {
     min-width: 100px;
