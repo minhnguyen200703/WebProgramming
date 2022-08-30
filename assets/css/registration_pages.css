@@ -1,3 +1,4 @@
+
 /* Common properties */
 h2, h3 {
     font-weight: 500;
@@ -609,4 +610,619 @@ input[type="password"] {
 
 .form_field:first-child .form_field__message {
     text-align: initial;
+}
+/* Common properties */
+h2, h3 {
+    font-weight: 500;
+    text-align: center;
+    color: white;
+}
+
+h2 {
+    font-size: 2.2rem;
+}
+
+h3 {
+    font-size: 1.8rem;
+}
+
+/* Header section */
+header {
+    position: relative;
+}
+
+.back_btn {
+    position: absolute;
+    top: 32px;
+    left: 64px;
+    padding: 12px 24px;
+    font-size: 1.4rem;
+    color: white;
+    font-weight: 600;
+    border-radius: 8px;
+    opacity: 0.7;
+    transition: 0.5s;
+}
+
+.back_btn:hover {
+    opacity: 1;
+}
+
+.back_btn i {
+    padding-right: 6px;
+}
+
+/* Main content */
+main {
+    background-color: #e5ecf9;
+    height: 100vh;
+}
+
+h2 {
+    text-align: center;
+}
+
+#customer_back_btn {
+    background-color: var(--blue_color);
+}
+
+#vendor_back_btn {
+    background-color: var(--orange_color);
+}
+
+#shipper_back_btn {
+    background-color: var(--green_color);
+}
+
+.customer .login_link,
+.customer h2 {
+    color: var(--blue_color);
+}
+
+.vendor .login_link,
+.vendor h2 {
+    color: var(--orange_color);
+}
+
+.shipper .login_link,
+.shipper h2 {
+    color: var(--green_color);
+}
+
+.registration {
+    height: calc(100vh - 160px);
+    padding: 80px 250px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Left content */
+.registration__left {
+    width: 45%;
+    position: relative;
+}
+
+.registration__left img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.registration__left_content {
+    position: absolute;
+    top: 80px;
+    padding: 0 56px;
+}
+
+.registration__left_content hr {
+    width: 90px; 
+    height: 3px; 
+    border-radius: 4px; 
+    background-color: white; 
+    border: none;
+}
+
+.registration__left_content h2 {
+    color: white;
+    letter-spacing: 2px;;
+}
+
+.registration__left_content__desc {
+    color: white;
+    font-size: 1.4rem;
+    line-height: 2.4rem;
+    text-align: justify;
+    margin: 28px 0 200px 0;
+}
+
+.registration__left__more {
+    text-align: center;
+}
+
+.registration__left__more li {
+    display: inline-block;
+    padding: 0 16px;
+}
+
+.registration__left__more li a {
+    color: white;
+    font-size: 1.6rem;
+}
+
+.registration__left__more li a:hover {
+    opacity: 0.8;
+}
+
+/* Right content */
+.registration__right {
+    padding-top: 36px;
+    width: 55%;
+    background-color: white;
+}
+
+.registration__form {
+    padding: 0 60px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form_field {
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: none;
+    outline: none;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.form_field:first-child {
+    margin-top: 16px;
+}
+
+.shipper .form_field:nth-child(5) {
+    /* justify-content: flex-start; */
+}
+
+.shipper .form_field:nth-child(5) select {
+    width: calc(64% - 2px);
+    padding: 8px 20px;
+    font-size: 1.6rem;
+}
+
+.form_field:first-child {
+    margin-top: 0;
+    display: inline-block;
+    text-align: center;
+    position: relative;
+}
+
+.form_field:first-child .form_field__label {
+    width: unset;
+}
+
+.form_field__label {
+    display: inline-block;
+    font-size: 1.5rem;
+    font-weight: 600;
+    width: 36%;
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: transparent;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+    background-repeat: no-repeat;
+    background-position-x: 100%;
+    background-position-y: 5px;
+    border-radius: 2px;
+  }
+.form_field__input {
+    width: calc(100% - 36% - 40px - 4px);
+}
+
+input[type="submit"] {
+    width: 100%;
+    margin: 12px 0 0 0;
+    padding: 16px 0;
+    font-size: 1.8rem;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"] {
+    padding: 8px 20px;
+    background-color: #f0f0f0;
+    border: none;
+    outline: none;
+    font-size: 1.5rem;
+    border-radius: 2px;
+}
+
+.avt_block {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 100px;
+    font-size: 50px;
+    color: white;
+    display: block;
+    object-fit: cover;
+    border: 2px solid gray;
+    position: relative;
+    transition: 0.4s;
+    filter: brightness(50%);
+}
+
+.avt_block:hover {
+    cursor: pointer;
+}
+
+.edit_btn {
+    display: inline-block;
+}
+
+.avt_block {
+    position: relative;
+}
+
+.edit_btn i {
+    content: "Edit";
+    font-size: 2rem;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.edit_btn i:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.registration__right__more {
+    font-size: 1.6rem;
+    text-align: center;
+}
+
+.login_link {
+    font-weight: 600;
+}
+
+.login_link:hover {
+    opacity: 0.7;
+}
+
+/* Validation */
+.invalid input {
+    border: 2px solid rgb(243, 116, 116);
+}
+
+.valid input {
+}
+
+.form_field__message {
+    margin-top: 4px;
+    margin-left: 36%;
+    font-size: 1.3rem;
+    display: block;
+    width: 100%;
+    color: red;
+}
+
+.form_field:first-child .form_field__message {
+    text-align: initial;
+}
+    /* Common properties */
+h2, h3 {
+    font-weight: 500;
+    text-align: center;
+    color: white;
+}
+
+h2 {
+    font-size: 2.2rem;
+}
+
+h3 {
+    font-size: 1.8rem;
+}
+
+/* Header section */
+header {
+    position: relative;
+}
+
+.back_btn {
+    position: absolute;
+    top: 32px;
+    left: 64px;
+    padding: 12px 24px;
+    font-size: 1.4rem;
+    color: white;
+    font-weight: 600;
+    border-radius: 8px;
+    opacity: 0.7;
+    transition: 0.5s;
+}
+
+.back_btn:hover {
+    opacity: 1;
+}
+
+.back_btn i {
+    padding-right: 6px;
+}
+
+/* Main content */
+main {
+    background-color: #e5ecf9;
+    height: 100vh;
+}
+
+h2 {
+    text-align: center;
+}
+
+#customer_back_btn {
+    background-color: var(--blue_color);
+}
+
+#vendor_back_btn {
+    background-color: var(--orange_color);
+}
+
+#shipper_back_btn {
+    background-color: var(--green_color);
+}
+
+.customer .login_link,
+.customer h2 {
+    color: var(--blue_color);
+}
+
+.vendor .login_link,
+.vendor h2 {
+    color: var(--orange_color);
+}
+
+.shipper .login_link,
+.shipper h2 {
+    color: var(--green_color);
+}
+
+.registration {
+    height: calc(100vh - 160px);
+    padding: 80px 250px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Left content */
+.registration__left {
+    width: 45%;
+    position: relative;
+}
+
+.registration__left img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.registration__left_content {
+    position: absolute;
+    top: 80px;
+    padding: 0 56px;
+}
+
+.registration__left_content hr {
+    width: 90px; 
+    height: 3px; 
+    border-radius: 4px; 
+    background-color: white; 
+    border: none;
+}
+
+.registration__left_content h2 {
+    color: white;
+    letter-spacing: 2px;;
+}
+
+.registration__left_content__desc {
+    color: white;
+    font-size: 1.4rem;
+    line-height: 2.4rem;
+    text-align: justify;
+    margin: 28px 0 200px 0;
+}
+
+.registration__left__more {
+    text-align: center;
+}
+
+.registration__left__more li {
+    display: inline-block;
+    padding: 0 16px;
+}
+
+.registration__left__more li a {
+    color: white;
+    font-size: 1.6rem;
+}
+
+.registration__left__more li a:hover {
+    opacity: 0.8;
+}
+
+/* Right content */
+.registration__right {
+    padding-top: 36px;
+    width: 55%;
+    background-color: white;
+}
+
+.registration__form {
+    padding: 0 60px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form_field {
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: none;
+    outline: none;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.form_field:first-child {
+    margin-top: 16px;
+}
+
+.shipper .form_field:nth-child(5) {
+    /* justify-content: flex-start; */
+}
+
+.shipper .form_field:nth-child(5) select {
+    width: calc(64% - 2px);
+    padding: 8px 20px;
+    font-size: 1.6rem;
+}
+
+.form_field:first-child {
+    margin-top: 0;
+    display: inline-block;
+    text-align: center;
+    position: relative;
+}
+
+.form_field:first-child .form_field__label {
+    width: unset;
+}
+
+.form_field__label {
+    display: inline-block;
+    font-size: 1.5rem;
+    font-weight: 600;
+    width: 36%;
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: transparent;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+    background-repeat: no-repeat;
+    background-position-x: 100%;
+    background-position-y: 5px;
+    border-radius: 2px;
+  }
+.form_field__input {
+    width: calc(100% - 36% - 40px - 4px);
+}
+
+input[type="submit"] {
+    width: 100%;
+    margin: 12px 0 0 0;
+    padding: 16px 0;
+    font-size: 1.8rem;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"] {
+    padding: 8px 20px;
+    background-color: #f0f0f0;
+    border: none;
+    outline: none;
+    font-size: 1.5rem;
+    border-radius: 2px;
+}
+
+.avt_block {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 100px;
+    font-size: 50px;
+    color: white;
+    display: block;
+    object-fit: cover;
+    border: 2px solid gray;
+    position: relative;
+    transition: 0.4s;
+    filter: brightness(50%);
+}
+
+.avt_block:hover {
+    cursor: pointer;
+}
+
+.edit_btn {
+    display: inline-block;
+}
+
+.avt_block {
+    position: relative;
+}
+
+.edit_btn i {
+    content: "Edit";
+    font-size: 2rem;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.edit_btn i:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.registration__right__more {
+    font-size: 1.6rem;
+    text-align: center;
+}
+
+.login_link {
+    font-weight: 600;
+}
+
+.login_link:hover {
+    opacity: 0.7;
+}
+
+/* Validation */
+.invalid input {
+    border: 2px solid rgb(243, 116, 116);
+}
+
+.valid input {
+}
+
+.form_field__message {
+    margin-top: 4px;
+    margin-left: 36%;
+    font-size: 1.3rem;
+    display: block;
+    width: 100%;
+    color: red;
+}
+
+.form_field:first-child .form_field__message {
+    text-align: initial;
+
 }
