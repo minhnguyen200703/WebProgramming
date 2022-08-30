@@ -45,9 +45,18 @@ function save_row(no)
  document.getElementById("save_button"+no).style.display="none";
 }
 
+// function delete_row(no)
+// {
+//  document.getElementById("row"+no+"").outerHTML="";
+// }
+
 function delete_row(no)
 {
- document.getElementById("row"+no+"").outerHTML="";
+    if (confirm("Do you want to delete this item?")) {
+        document.getElementById("row"+no+"").outerHTML="";
+      } else {
+        return;
+      }
 }
 
 

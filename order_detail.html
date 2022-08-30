@@ -7,6 +7,7 @@
     <title>Update Orders</title>
     <script type="text/javascript" src="./assets/js/table.js"></script>
     <script src="./assets/js/jquery.js"></script>
+    <script src="./assets/js/alert.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </script>
     <style>
@@ -73,7 +74,6 @@
                     </ul>
             </nav>
 
-
             <!-- profile, greeting and filer holder -->
 
             <div class="shipper_content">
@@ -98,28 +98,38 @@
                             <td  id="name_row1">A pack of 4 Spoons</td>
                             <td id="address_row1">100 Ba Hat Street Ward 4 District 10</td>
                             <td id="customer_row1">A</td>
-                            <td id="status_row1"><img src="./assets/img/check_mark.png" alt="checkmarkicon" class="shipper__icon"></td>
+                            <td id="status_row1"><i class="	fa fa-check"></i></td>
                             <td>
                                 <input type="button" id="edit_button1" value="Edit" class="edit" onclick="edit_row('1')">
                                 <input type="button" id="save_button1" value="Save" class="save" onclick="save_row('1')">
                                 <input type="button" value="Delete" class="delete" onclick="delete_row('1')">
                                 </td>
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>200</td>
-                            <td>Cute bunny socks</td>
-                            <td>28/9 Blah Blah Street Ward 10 District Tan Binh</td>
-                            <td>B</td>
-                            <td><img src="./assets/img/pending-icon.png" alt="pendingicon" class="shipper__icon"></td>
+                        <tr id="row2">
+                            <td id="non_row2">2</td>
+                            <td id="id_row2">200</td>
+                            <td id="name_row2">Cute bunny socks</td>
+                            <td id="address_row2">28/9 Blah Blah Street Ward 10 District Tan Binh</td>
+                            <td id="customer_row2">B</td>
+                            <td id="status_row2"><i class="fa fa-spinner"></i></td>
+                            <td>
+                                <input type="button" id="edit_button2" value="Edit" class="edit" onclick="edit_row('2')">
+                                <input type="button" id="save_button2" value="Save" class="save" onclick="save_row('2')">
+                                <input type="button" value="Delete" class="delete" onclick="delete_row('2')">
+                                </td>
                         </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>300</td>
-                            <td>Bunny Glasses</td>
-                            <td>A/19 Blah Blah Street Ward 1 District 7</td>
-                            <td>C</td>
-                            <td><img src="./assets/img/red_mark.png" alt="crossmarkicon" class="shipper__icon"></td>
+                        <tr id="row3">
+                            <td id="non_row3">3</td>
+                            <td id="id_row3">300</td>
+                            <td id="name_row3">Bunny Glasses</td>
+                            <td id="address_row3">A/19 Blah Blah Street Ward 1 District 7</td>
+                            <td id="customer_row3">C</td>
+                            <td id="status_row3"><i class="	fa fa-close"></i></td>
+                            <td>
+                                <input type="button" id="edit_button3" value="Edit" class="edit" onclick="edit_row('3')">
+                                <input type="button" id="save_button3" value="Save" class="save" onclick="save_row('3')">
+                                <input type="button" value="Delete" class="delete" onclick="delete_row('3')">
+                                </td>
                         </tr>
                         <tr>
                             <td><input type="text" id="new_no"></td>
