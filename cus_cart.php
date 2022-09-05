@@ -1,3 +1,13 @@
+<?php
+    session_start();
+    if(isset($_GET['cart'])){
+        $cart = $_GET['cart'];
+        $file = fopen("order.csv",$cart);
+        fclose("order.csv");
+        unset($cart);
+    };
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -124,8 +134,9 @@
         // showCart(cart) 
         }}
 
-    </script>
+    
 
+    </script>
     <script>
             document.querySelector(".checkout_btn").addEventListener("click", orderSend)
     </script>

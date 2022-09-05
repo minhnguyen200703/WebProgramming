@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
+<<<<<<< Updated upstream
 /* HTML */
 
 main {
@@ -135,74 +134,5 @@ main {
 
 .vendor_product__img {
     width: 50px;
->>>>>>> parent of cc2a97f (,,,)
-=======
-/* HTML */
-
-main {
-    display: flex;
-    flex-direction: column;
-    margin: auto 10%;    
-}
-
-
-/* Add section */
-
-.add_product {
-    margin: 64px auto 0;
-    max-width: 70em;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px 0 rgba(65, 132, 234, 0.75);
-    border: 1px solid #000;
-    padding: 32px;
-}
-
-.add_product__title {
-    text-align: center;
-    color: #25aae1;
-    font-size: 24px;
-}
-/* 
-#add_form {
-
-} */
-
-.add_container {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.add_item {
-    flex: 1 1 480px;
-    margin-bottom: 16px;
-}
-
-.add_desc {
-    color: #ccc;
-}
-
-.add_box {
-    width: 100%;
-}
-
-/* Vendor Product List */
-
-.vendor_product_list {
-    text-align: center; 
-    vertical-align: middle;
-}
-
-.vendor_product_list thead {
-    font-size: 24px;
-    font-weight: 600;
-}
-
-.vendor_product_list tbody {
-    font-size: 20px;
-}
-
-.vendor_product__img {
-    width: 50px;
->>>>>>> parent of cc2a97f (,,,)
+>>>>>>> Stashed changes
 }
