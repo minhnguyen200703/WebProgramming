@@ -1,19 +1,30 @@
 <?php
+    session_start();
+    ob_start();
 
-session_start();
+// Check if logged in
+    if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == false) {
+        header("Location: index.php"); 
+        exit();
+    };
 
-// function read_from_file() {
-   $order = file_get_contents("order.json");
-   $order = json_decode($order);
-   print_r($order);
-//    foreach ($order as $orderDetail) {
-//     print_r($orderDetail);
-//    }
-?>
+    $hub_user = $_SESSION['user']['distribution_hub'];
+
+    
+    $file_name = './assets/storage/hubs.db';
+    $fp = fopen($file_name, 'r');
+    // first row => field names
+    while ($row = fgetcsv($fp)) {
+        if ($row[1] == $hub_user) {
+            $hub_id = $row[0];
+        }
+    };
+
+;?>
 
 <!DOCTYPE html>
 <html lang="en">
-<<head>
+<head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -54,19 +65,83 @@ session_start();
                     <a href="#" class="nav_pc_item__link">Contact</a>
                 </li>
                 <li class="nav_pc_item">
-                    <a href="#" class="nav_pc_item__profile">
-                        <img src="./assets/img/user.png" alt="">
-                    </a>
+                    <img src="<?php echo $_SESSION['user']['avatar']?>" alt="" class="nav_pc_item__avt">
+                    <ul class="account-setting-container hide">
+                        <li>
+                            <h3>Hi <?php echo $_SESSION['user']['real_name'] ?></h3>
+                        </li>
+                        <li class="account-setting-item">
+                            <a href="my_account.php">My account</a>
+                        </li>
+                        <li class="account-setting-item">
+                            <a href="index.php">Log out</a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </nav>
-
     </header>
 
     <!-- Main -->
 
     <main>
         
+    <div class="hub_info">
+        <h2>
+            Hub name: <?php echo $hub_user?>
+        </h2>
+    </div>
+
+    <div class="shipper_product_display">
+        <table border=1px class="cus_cart_list">
+                    <thead>
+                        <th>No</th>
+                        <th>Order by</th>
+                        <th>Access</th>
+                    </thead>
+
+                    <tbody class="cus_cart_body">  
+                        <?php
+                            $order = json_decode(file_get_contents("./assets/storage/order.json"), true);
+                            $index = 0;
+                            if (is_null($order)) {
+                                print_r('There is no order');
+                            } else {
+                            foreach ($order as $key => $orderDetail) {
+                                if ($orderDetail[3] == "active") {
+                                if ($hub_id == $orderDetail[2]) {
+                                    ++$index;
+
+                                    echo "
+                                    <tr>
+                                        <td>$index</td>
+                                        <td>$orderDetail[1]</td>
+                                        <td>
+                                            <a href=\"shipper_detail.php?index=$key\">;
+                                        </td>
+                                    </tr>
+                                    "
+                                    ;
+                                }
+                            }}};
+                        ?>
+                    </tbody>
+            </table>
+    </div>
+
+
     </main>
+    <script>
+        var avatarElement = document.querySelector('.nav_pc_item__avt');
+        var accountSetting = document.querySelector('.account-setting-container');
+
+        avatarElement.onclick = function() {
+            if (accountSetting.classList.contains('hide')) {
+                accountSetting.classList.remove('hide');
+            } else {
+                accountSetting.classList.add('hide');
+            }
+    }
+    </script>    
 </body>
 </html>

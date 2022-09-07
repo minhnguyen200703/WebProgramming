@@ -8,9 +8,8 @@
         header("Location: index.php"); 
         exit();
     };
+
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -34,8 +33,8 @@
     <link rel="stylesheet" href="./assets/css/vendor.css">
 </head>
 <body>
-     <!-- Header section -->
-     <header>
+    <!-- Header section -->
+    <header>
         <div class="brand">
             <img src="assets/img/logo.png" alt="" class="brand__logo">
             <p class="brand__text">Zalada</p>
@@ -71,50 +70,12 @@
             </ul>
         </nav>
     </header>
-
-    <!-- Main section -->
-
-    <main>
-        <h1>My Product</h1>
-
-        <table border=1px class="vendor_product_list">
-            <thead>
-                <th>Product Image</th>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Description</th>
-                <!-- <th>Delete</th> -->
-            </thead>
-
-            <tbody>
-                <?php
-
-                    $products = json_decode(file_get_contents("./assets/storage/product.json"), true);
-                    
-                    if (!empty($products)) {
-                        
-                        foreach($products as $product) {
-                            if ($product['username'] == $_SESSION['user']['username']) {
-                            $image = $product['image'];
-                            $name = $product['name'];
-                            $price = $product['price'];
-                            $desc = $product['desc'];
-                            echo "<tr>";
-                            echo    "<td><img class=\"vendor_product__img\" src=\"./assets/product_img/$image\" alt=\"Product image\"></td>";
-                            echo "<td>$name</td>";
-                            echo "<td>$price</td>";
-                            echo "<td>$desc</td>";
-                            echo "</tr>";
-                }}} else {
-                        echo "<span class=\"vendor_no_product\"> No product added </span>";
-                    };
-                ?>
-
-            </tbody>
-
-        </table>
-        <!-- <td><button><input type="hidden" name="delete">Delete</button></td> -->
-    </main>
+    <button>
+        <a href="vendor_add_product.php"> Add product</a>
+    </button>
+    <button>
+        <a href="vendor_product.php"> View product</a>
+    </button>
 
     <script>
         var avatarElement = document.querySelector('.nav_pc_item__avt');

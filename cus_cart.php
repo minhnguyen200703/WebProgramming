@@ -1,11 +1,14 @@
 <?php
     session_start();
-    if(isset($_GET['cart'])){
-        $cart = $_GET['cart'];
-        $file = fopen("order.csv",$cart);
-        fclose("order.csv");
-        unset($cart);
+    ob_start();
+
+    // Check if logged in
+    
+    if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == false) {
+        header("Location: index.php"); 
+        exit();
     };
+
 ?>
 
 <!DOCTYPE html>
@@ -51,21 +54,29 @@
                     <a href="#" class="nav_pc_item__link">Contact</a>
                 </li>
                 <li class="nav_pc_item">
-                    <a href="#" class="nav_pc_item__profile">
-                        <img src="./assets/img/user.png" alt="">
-                    </a>
+                    <img src="<?php echo $_SESSION['user']['avatar']?>" alt="" class="nav_pc_item__avt">
+                    <ul class="account-setting-container hide">
+                        <li>
+                            <h3>Hi <?php echo $_SESSION['user']['real_name'] ?></h3>
+                        </li>
+                        <li class="account-setting-item">
+                            <a href="my_account.php">My account</a>
+                        </li>
+                        <li class="account-setting-item">
+                            <a href="index.php">Log out</a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </nav>
-
     </header>
 
         <!-- Main -->
     <main>
         <h2>Shopping cart</h2>
-        <form action="">
             <table border=1px class="cus_cart_list">
                     <thead>
+                        <th>No</th>
                         <th>Product Image</th>
                         <th>Name</th>
                         <th>Price</th>
@@ -77,12 +88,10 @@
 
                     </tbody>
             </table>
-            <input style="padding: 16px 24px; border: 1px solid #000;" type="submit" value="cart_add" name="cart_add">
-        </form>
         <button class="checkout_btn">
             Check out
         </button>
-        <button class="reset_card">12312321</button>        
+        <button class="reset_card">Reset</button>        
 
     </main>
 
@@ -98,41 +107,53 @@
         } else {
             cardBody.innerHTML += `<span>There is no product here</span>`
         }
-        cart.map(item => {
-            cardBody.innerHTML += `
-                <tr>
-                    <td><img src="${item.product.image}" alt="Product's image"></td>
-                    <td>${item.product.name}</td>
-                    <td>${item.product.price}</td>
-                    <td>${item.quantity}</td>
-                    <td>${item.product.detail}</td>
-                    <td>
-                        <button onclick="removeItem(${item.product.name})">Remove</button>
-                    </td>
-                </tr>
-            `
+        cart.forEach((product, index) => {
+            let productId = index
+            index++
+
+        cardBody.innerHTML += `
+            <tr>
+                <td>${productId + 1}</td>
+                <td><img src="${product.product.image}" alt="Product's image"></td>
+                <td>${product.product.name}</td>
+                <td>${product.product.price}</td>
+                <td>${product.quantity}</td>
+                <td>${product.product.detail}</td>
+                <td>
+                    <a href="#" onclick="removeItem(${productId})">Remove</a>
+                </td>
+            </tr>
+        `
         })
+        
     };
-    let storage = localStorage.getItem('cart')
-    var order = []
+
+    function random (maxValue) {
+        return Math.floor(Math.random() * maxValue)
+    }
     function orderSend () {
-        window.location.href = `http://localhost/WebProgramming/cus_main.php?cart=${storage}`
+        let storage = (localStorage.getItem('cart'))
+        let distributionHub = random(3)
+        window.location.href = `http://localhost/WebProgramming/cus_main.php?cart=${storage}&user=<?php echo $_SESSION['user']['username'] ?>&hub=${distributionHub}&address=<?php echo $_SESSION['user']['address'] ?>`
         alert('Order placed. Thank you for your order!')
     }
     
+    
+    function removeItem(id) {
+        let storage = localStorage.getItem('cart')
+        if (storage) {
+            cart = JSON.parse(storage)}
+        // name = name.split('_').join(' ')
+        console.log(cart)
+        cart.splice(id, 1)
+        localStorage.setItem('cart', JSON.stringify(cart))
+        showCart()
+        }
+   
     document.querySelector(".reset_card").addEventListener("click", function () {
         localStorage.removeItem('cart')
         location.reload()
     })
-
-    function removeItem(name) {
-        let storage = localStorage.getItem('cart')
-        if (storage) {
-            cart = JSON.parse(storage)
-        cart = cart.filter(item => item.product.name != name)
-        localStorage.setItem('cart', JSON.stringify(cart))
-        // showCart(cart) 
-        }}
 
     
 
@@ -140,5 +161,17 @@
     <script>
             document.querySelector(".checkout_btn").addEventListener("click", orderSend)
     </script>
+    <script>
+        var avatarElement = document.querySelector('.nav_pc_item__avt');
+        var accountSetting = document.querySelector('.account-setting-container');
+
+        avatarElement.onclick = function() {
+            if (accountSetting.classList.contains('hide')) {
+                accountSetting.classList.remove('hide');
+            } else {
+                accountSetting.classList.add('hide');
+            }
+    }
+    </script>    
 </body>
 </html>
