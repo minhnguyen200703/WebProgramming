@@ -101,7 +101,7 @@
 </head>
 <body>
     <header>
-        <a href="index.php" class="back_btn"  id="customer_back_btn"><i class="fa-solid fa-chevron-left"></i>Back</a>
+        <a href="./www/index.php" class="back_btn"  id="customer_back_btn"><i class="fa-solid fa-chevron-left"></i>Back</a>
     </header>
     <main>
         <div class="registration customer">
@@ -117,16 +117,10 @@
 
                     <ul class="registration__left__more">
                         <li>
-                            <a href="">Policies</a>
+                            <a href="./privacy_policies.html">Policies</a>
                         </li>
                         <li>
-                            <a href="">About</a>
-                        </li>
-                        <li>
-                            <a href="">Privacies</a>
-                        </li>
-                        <li>
-                            <a href="">Help?</a>
+                            <a href="./about.html">About</a>
                         </li>
                     </ul>
                 </div>

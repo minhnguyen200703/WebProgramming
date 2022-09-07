@@ -2,7 +2,7 @@
     session_start();
     ob_start();
     if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == false) {
-        header("Location: index.php"); 
+        header("Location: ./www/index.php"); 
         exit();
     } 
 ?>
@@ -101,7 +101,7 @@
                             <a href="my_account.php">My account</a>
                         </li>
                         <li class="account-setting-item">
-                            <a href="index.php">Log out</a>
+                            <a href="./www/index.php">Log out</a>
                         </li>
                     </ul>
                 </li>

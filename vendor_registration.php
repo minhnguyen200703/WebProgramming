@@ -118,16 +118,10 @@
 
                     <ul class="registration__left__more">
                         <li>
-                            <a href="">Policies</a>
+                            <a href="./privacy_policies.html">Policies</a>
                         </li>
                         <li>
-                            <a href="">About</a>
-                        </li>
-                        <li>
-                            <a href="">Privacies</a>
-                        </li>
-                        <li>
-                            <a href="">Help?</a>
+                            <a href="./about.html">About</a>
                         </li>
                     </ul>
                 </div>

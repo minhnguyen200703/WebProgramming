@@ -5,7 +5,7 @@
     // Check if logged in
     
     if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == false) {
-        header("Location: index.php"); 
+        header("Location: ./www/index.php"); 
         exit();
     };
 ?>
@@ -36,26 +36,26 @@
 <body>
      <!-- Header section -->
      <header>
+
+            <!-- Logo -->
         <div class="brand">
             <img src="assets/img/logo.png" alt="" class="brand__logo">
             <p class="brand__text">Zalada</p>
         </div>
+
+            <!-- Navigation bar -->
         <nav>
             <ul class="nav_pc_container">
                 <li class="nav_pc_item">
-                    <a href="#" class="nav_pc_item__link">About</a>
+                    <a href="./about.html" class="nav_pc_item__link">About</a>
                 </li>
                 <li class="nav_pc_item">
-                    <a href="#" class="nav_pc_item__link">Policies</a>
+                    <a href="./privacy_policies.html" class="nav_pc_item__link">Policies</a>
                 </li>
+
+                <!-- User -->
                 <li class="nav_pc_item">
-                    <a href="#" class="nav_pc_item__link">Help</a>
-                </li>
-                <li class="nav_pc_item">
-                    <a href="#" class="nav_pc_item__link">Contact</a>
-                </li>
-                <li class="nav_pc_item">
-                    <img src="<?php echo $_SESSION['user']['avatar']?>" alt="" class="nav_pc_item__avt">
+                    <img src="<?php echo $_SESSION['user']['avatar']?>" alt="User's avatar" class="nav_pc_item__avt">
                     <ul class="account-setting-container hide">
                         <li>
                             <h3>Hi <?php echo $_SESSION['user']['business_name'] ?></h3>
@@ -64,17 +64,25 @@
                             <a href="my_account.php">My account</a>
                         </li>
                         <li class="account-setting-item">
-                            <a href="index.php">Log out</a>
+                            <a href="./www/index.php">Log out</a>
                         </li>
                     </ul>
+                </li>
+                <li class="nav_pc_item">
+                    <h1><?php echo $_SESSION['user']['business_name'] ?></h1>
                 </li>
             </ul>
         </nav>
     </header>
-
     <!-- Main section -->
-
     <main>
+
+        <!-- Back to Vendor main section -->
+        <div class="vendor_back_to_main">
+            <a href="./vendor_main.php" class="vendor_back_to_main__btn"><i class="fa-solid fa-chevron-left"></i>Back</a>
+        </div>
+
+
         <h1>My Product</h1>
 
         <table border=1px class="vendor_product_list">
@@ -83,18 +91,23 @@
                 <th>Name</th>
                 <th>Price</th>
                 <th>Description</th>
-                <!-- <th>Delete</th> -->
             </thead>
 
             <tbody>
+                <!-- Insert data of each product for each row in the table <tbody> -->
                 <?php
-
+                    // Take the data out from product.json and decode 
                     $products = json_decode(file_get_contents("./assets/storage/product.json"), true);
-                    
+
+                        // Check if array emtpy
                     if (!empty($products)) {
-                        
+
+                            // If not empty
+                        // Loop each element in $products to take each data of each product 
                         foreach($products as $product) {
+                            // Compare the username of who added the product with the current username
                             if ($product['username'] == $_SESSION['user']['username']) {
+                                // If the same, take the data out and add new row; if not, next
                             $image = $product['image'];
                             $name = $product['name'];
                             $price = $product['price'];
@@ -106,6 +119,7 @@
                             echo "<td>$desc</td>";
                             echo "</tr>";
                 }}} else {
+                            // If empty show No product added
                         echo "<span class=\"vendor_no_product\"> No product added </span>";
                     };
                 ?>
@@ -113,10 +127,12 @@
             </tbody>
 
         </table>
-        <!-- <td><button><input type="hidden" name="delete">Delete</button></td> -->
     </main>
 
     <script>
+
+                // Open the Accouunt setting subnav bar
+
         var avatarElement = document.querySelector('.nav_pc_item__avt');
         var accountSetting = document.querySelector('.account-setting-container');
 

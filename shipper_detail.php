@@ -4,14 +4,15 @@
 
 // Check if logged in
     if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == false) {
-        header("Location: index.php"); 
+        header("Location: ./www/index.php"); 
         exit();
     };
 
-        // Take the order 
+        // Take the order value base on $_GET method
     if (isset($_GET['index'])) {
         $index = $_GET['index'];
     }
+    // Read data and take all the order relevant information 
     $file = json_decode(file_get_contents("./assets/storage/order.json"), true);
     $order = json_decode($file[$index][0],true);
     $address = $file[$index][4];
@@ -19,7 +20,6 @@
     $user = $file[$index][1];
     
     // Check if user update status
-
     if (isset($_GET['update_status'])) {
         $new_status = $_GET['update_status'];
         $file[$index][3] = $new_status;
@@ -56,10 +56,13 @@
 <body>
     <!-- Header section -->
     <header>
+
         <div class="brand">
             <img src="assets/img/logo.png" alt="" class="brand__logo">
             <p class="brand__text">Zalada</p>
         </div>
+
+        <!-- Nav bar -->
         <nav>
             <ul class="nav_pc_container">
                 <li class="nav_pc_item">
@@ -67,12 +70,6 @@
                 </li>
                 <li class="nav_pc_item">
                     <a href="#" class="nav_pc_item__link">Policies</a>
-                </li>
-                <li class="nav_pc_item">
-                    <a href="#" class="nav_pc_item__link">Help</a>
-                </li>
-                <li class="nav_pc_item">
-                    <a href="#" class="nav_pc_item__link">Contact</a>
                 </li>
                 <li class="nav_pc_item">
                     <img src="<?php echo $_SESSION['user']['avatar']?>" alt="" class="nav_pc_item__avt">
@@ -84,23 +81,38 @@
                             <a href="my_account.php">My account</a>
                         </li>
                         <li class="account-setting-item">
-                            <a href="index.php">Log out</a>
+                            <a href="./www/index.php">Log out</a>
                         </li>
                     </ul>
                 </li>
+                <li>
+                    <h1><?php echo $_SESSION['user']['real_name'] ?></h1>
+                </li>
             </ul>
         </nav>
+
     </header>
 
+        <!-- Main section -->
     <main>
+            <!-- Main header -->
+        <div class="main_header">
+            <!-- Back to cus_main -->
+            <div class="shipper_back_to_main">
+                <a href="./shipper_main.php" class="shipper_back_to_main__btn"><i class="fa-solid fa-chevron-left"></i>Back</a>
+            </div>
+        </div>
+
+            <!-- Buyer personal inforamtion -->
         <div class="buyer_detail_container">
             Orderer: <span><?php echo $user ?></span> <br>
             Address: <span><?php echo $address ?> </span> <br>
         </div>
 
+            <!-- Order detail -->
         <div class="order_detail_container">
             <table border=1px class="cus_cart_list">
-                <thead>
+                <thead class="order_head">
                     <th>No</th>
                     <th>Product Image</th>
                     <th>Product Name</th>
@@ -108,7 +120,7 @@
                     <th>Quantity</th>
                 </thead>
 
-                <tbody class="cus_cart_body">  
+                <tbody class="order_body">  
                     <?php
                         $total_price = 0;
                         foreach ($order as $key => $product) {
@@ -157,6 +169,8 @@
     
 
     <script>
+
+            // Open the Accouunt setting subnav bar
         var avatarElement = document.querySelector('.nav_pc_item__avt');
         var accountSetting = document.querySelector('.account-setting-container');
 
@@ -170,10 +184,12 @@
     </script> 
 
     <script>
+        // Get current url function
         function getCurrentURL () {
             return window.location.href
         }
         
+        // Change status function
         function changeStatus(status) {
             window.location.href = url.concat("&", "update_status=", status)
         }
@@ -182,9 +198,12 @@
         var cancel = document.querySelector('.canceled')
         const url = getCurrentURL()
 
+        // Run the change status function as click on delivered button
         deliver.addEventListener('click', function () {
             changeStatus('delivered')
         })
+
+        // Run the change status function as click on canceled button
         cancel.addEventListener('click', function () {
             changeStatus('canceled')
         })

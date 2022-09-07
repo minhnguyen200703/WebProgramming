@@ -5,7 +5,7 @@
     // Check if logged in
     
     if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == false) {
-        header("Location: index.php"); 
+        header("Location: ./www/index.php"); 
         exit();
     };
 
@@ -35,26 +35,26 @@
 <body>
     <!-- Header section -->
     <header>
+
+            <!-- Logo -->
         <div class="brand">
             <img src="assets/img/logo.png" alt="" class="brand__logo">
             <p class="brand__text">Zalada</p>
         </div>
+
+            <!-- Navigation bar -->
         <nav>
             <ul class="nav_pc_container">
                 <li class="nav_pc_item">
-                    <a href="#" class="nav_pc_item__link">About</a>
+                    <a href="./about.html" class="nav_pc_item__link">About</a>
                 </li>
                 <li class="nav_pc_item">
-                    <a href="#" class="nav_pc_item__link">Policies</a>
+                    <a href="./privacy_policies.html" class="nav_pc_item__link">Policies</a>
                 </li>
+
+                <!-- User -->
                 <li class="nav_pc_item">
-                    <a href="#" class="nav_pc_item__link">Help</a>
-                </li>
-                <li class="nav_pc_item">
-                    <a href="#" class="nav_pc_item__link">Contact</a>
-                </li>
-                <li class="nav_pc_item">
-                    <img src="<?php echo $_SESSION['user']['avatar']?>" alt="" class="nav_pc_item__avt">
+                    <img src="<?php echo $_SESSION['user']['avatar']?>" alt="User's avatar" class="nav_pc_item__avt">
                     <ul class="account-setting-container hide">
                         <li>
                             <h3>Hi <?php echo $_SESSION['user']['business_name'] ?></h3>
@@ -63,21 +63,42 @@
                             <a href="my_account.php">My account</a>
                         </li>
                         <li class="account-setting-item">
-                            <a href="index.php">Log out</a>
+                            <a href="./www/index.php">Log out</a>
                         </li>
                     </ul>
+                </li>
+                <li class="nav_pc_item">
+                    <h1><?php echo $_SESSION['user']['business_name'] ?></h1>
                 </li>
             </ul>
         </nav>
     </header>
-    <button>
-        <a href="vendor_add_product.php"> Add product</a>
-    </button>
-    <button>
-        <a href="vendor_product.php"> View product</a>
-    </button>
+
+            <!-- Main section -->
+
+    <main>
+
+            <!-- Choosing section -->
+        <div class="vendor_main_container">
+            <button class="vendor_add_product__btn">
+                <a href="vendor_add_product.php"> Add product</a>
+            </button>
+            <button class="vendor_view_product__btn">
+                <a href="vendor_product.php"> View product</a>
+            </button>
+        </div>
+
+    </main>
+
+    <footer>
+
+
+    </footer>
 
     <script>
+
+            // Open the Accouunt setting subnav bar
+            
         var avatarElement = document.querySelector('.nav_pc_item__avt');
         var accountSetting = document.querySelector('.account-setting-container');
 

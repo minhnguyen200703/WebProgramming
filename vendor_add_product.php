@@ -4,13 +4,15 @@
     // Check if logged in
     ob_start();
     if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == false) {
-        header("Location: index.php"); 
+        header("Location: ./www/index.php"); 
         exit();
     };
-
+    
+    // Get product's data and write to file product.json
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if(isset($_POST['add_product'])) {
+            // Get data add to product variable from global variable POST
             $product = [
                 'name' => $_POST['name'],
                 'price' => $_POST['price'],
@@ -19,10 +21,15 @@
                 'username' => $_SESSION['user']['username'],
             ];
             
-            move_uploaded_file($_FILES['image']['tmp_name'], "./assets/product_img/".$_FILES['image']['name']);   
+            // Move product image from tmp to our image file
+            move_uploaded_file($_FILES['image']['tmp_name'], "./assets/product_img/".$_FILES['image']['name']);  
+            // Get all data from json file to $file
             $file = json_decode(file_get_contents('./assets/storage/product.json'),true);
+            // Append product to array $file
             $file[] = $product;
+            // Write back to json file
             file_put_contents('./assets/storage/product.json', json_encode($file));
+            // Alert successfully added
             echo "<script>alert(\"Item added successfully\")</script>";
         }};
 ?>
@@ -52,26 +59,26 @@
 <body>
     <!-- Header section -->
     <header>
+
+            <!-- Logo -->
         <div class="brand">
             <img src="assets/img/logo.png" alt="" class="brand__logo">
             <p class="brand__text">Zalada</p>
         </div>
+
+            <!-- Navigation bar -->
         <nav>
             <ul class="nav_pc_container">
                 <li class="nav_pc_item">
-                    <a href="#" class="nav_pc_item__link">About</a>
+                    <a href="./about.html" class="nav_pc_item__link">About</a>
                 </li>
                 <li class="nav_pc_item">
-                    <a href="#" class="nav_pc_item__link">Policies</a>
+                    <a href="./privacy_policies.html" class="nav_pc_item__link">Policies</a>
                 </li>
+
+                <!-- User -->
                 <li class="nav_pc_item">
-                    <a href="#" class="nav_pc_item__link">Help</a>
-                </li>
-                <li class="nav_pc_item">
-                    <a href="#" class="nav_pc_item__link">Contact</a>
-                </li>
-                <li class="nav_pc_item">
-                    <img src="<?php echo $_SESSION['user']['avatar']?>" alt="" class="nav_pc_item__avt">
+                    <img src="<?php echo $_SESSION['user']['avatar']?>" alt="User's avatar" class="nav_pc_item__avt">
                     <ul class="account-setting-container hide">
                         <li>
                             <h3>Hi <?php echo $_SESSION['user']['business_name'] ?></h3>
@@ -80,15 +87,24 @@
                             <a href="my_account.php">My account</a>
                         </li>
                         <li class="account-setting-item">
-                            <a href="index.php">Log out</a>
+                            <a href="./www/index.php">Log out</a>
                         </li>
                     </ul>
+                </li>
+                <li class="nav_pc_item">
+                    <h1><?php echo $_SESSION['user']['business_name'] ?></h1>
                 </li>
             </ul>
         </nav>
     </header>
     <!-- Main section -->
     <main>
+
+        <!-- Back to Vendor main section -->
+        <div class="vendor_back_to_main">
+            <a href="./vendor_main.php" class="vendor_back_to_main__btn"><i class="fa-solid fa-chevron-left"></i>Back</a>
+        </div>
+
 
     <!-- Add section -->
     <div class="add_product">
@@ -118,7 +134,7 @@
                 </div>
                 <br>
                 <br>
-                <div class="add_item">
+                <div class="add_item vendor_submit_btn">
                     <input type="submit" value="add_product" name="add_product" id="submit_product_btn">
                 </div>
             </div>
@@ -131,6 +147,9 @@
     </main>
     <script src="./assets/js/validator.js"></script>
     <script>
+
+            // Validate the data in Add Product Form
+        // Select the input
         var productName = document.querySelector("#product_name");
         var productPrice = document.querySelector("#product_price");
         var productDesc = document.querySelector("#product_desc");
@@ -161,7 +180,7 @@
             }
 
             // Validate product description
-            if (!checkMaxLength(productDescValue)) {
+            if (!checkMaxLength(productDescValue, 500)) {
                 showError(productDesc, "Description of product must be at most 500");
             } else {
                 showSuccess(productDesc);
@@ -175,6 +194,7 @@
             return false
         }
         
+            // Run function when hear click at submit
         submitButton.addEventListener('click', function(event) {
             let isValid = addProductValidation();
             if (!isValid) {
@@ -185,6 +205,10 @@
 
     </script>     
     <script>
+
+
+            // Open the Accouunt setting subnav bar
+
         var avatarElement = document.querySelector('.nav_pc_item__avt');
         var accountSetting = document.querySelector('.account-setting-container');
 

@@ -1,4 +1,5 @@
 /* Header section */
+
 header {
     display: flex;
     justify-content: space-between;
@@ -58,6 +59,10 @@ nav {
 
 .nav_pc_item__profile img {
     width: 35px;
+}
+
+.nav_pc_item:last-child p{
+    font-size: 24px;
 }
 
 /* Main content */

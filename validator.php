@@ -1,79 +1,44 @@
 <?php
-    function showError(selector, message) {
-        let parentSelector = selector.parentElement;
-        let errorMessage = parentSelector.querySelector('.form_field__message');
-        parentSelector.classList.add('error');
-        errorMessage.innerText = message;
+    function test_input($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
     }
-    
-    function showSuccess(selector) {
-        let parentSelector = selector.parentElement;
-        let errorMessage = parentSelector.querySelector('.form_field__message');
-        parentSelector.classList.remove('error');
-        errorMessage.innerText = "";
+
+    function onlyLettersAndNumbers($data) {
+        return preg_match('/[^A-Za-z0-9]/', $data);
     }
-    
-    function onlyLettersAndNumbers(value) {
-        return /^[A-Za-z0-9]*$/.test(value);
+
+    function checkLowerCase($data) {
+        return preg_match('/[a-z]/', $data);
     }
-    
-    function checkLowerCase(value) {
-        return value.toUpperCase() != value;
+
+    function checkUpperCase($data) {
+        return preg_match('/[A-Z]/', $data);
     }
-    
-    function checkUpperCase(value) {
-        return value.toLowerCase() != value;
+
+    function checkSymbol($data) {
+        return preg_match('[!@#$%^&*]', $data);
     }
-    
-    function checkSymbol(value) {
-        symbols = /[!@#$%^&*]/;
-        return symbols.test(value);
+
+    function checkNumber($data) {
+        return preg_match('~[0-9]+~', $data);
     }
-    
-    function checkNumber(value) {
-        return /\d/.test(value);
+
+    function checkBetweenLength($data, $min, $max) {
+        return strlen($data) >= $min && strlen($data) <= $max;
     }
-    
-    function checkBetweenLength(value, min, max) {
-        return value.length >= min && value.length <= max;
+
+    function checkMinLength($data, $min) {
+        return strlen($data) >= $min;
     }
-    
-    function checkMinLength(value, min) {
-        return value.length >= min
+
+    function checkFileUpload($data) {
+        return file_exists($data['tmp_name']) || is_uploaded_file($data['tmp_name']);
     }
-    
-    function checkMaxLength(value, max) {
-        return value.length <= max;
-    }
-    
-    function checkNumberPostitive(value) {
-        return parseInt(value) > 0;
-    }
-    
-    function otherFieldValidation(selector) {
-        // To validate name, address, ...
-        if (!selector.value.trim()) {
-            showError(selector, 'Not be blank');
-        } else if (!checkMinLength(selector.value.trim(), 5)) {
-            showError(selector, 'At least 5 characters required');
-        } else {
-            showSuccess(selector);
-            return true;
-        }
-        return false;
-    }
-    
-    function checkSelect(selector) {
-        if(selector.selectedIndex <=0) {
-            showError(selector, 'Not be blank');
-        } else {
-            showSuccess(selector);
-            return true;
-        }
-        return false;
-    }
-    
-    function checkFileUpload(selector) {
-        return selector.value;
+
+    function checkSelect($data) {
+        return $data == 'selectcard';
     }
 ?>

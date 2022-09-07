@@ -38,30 +38,38 @@ function checkBetweenLength(value, min, max) {
 }
 
 function checkMinLength(value, min) {
-    return value.length >= min;
+    return value.length >= min
+}
+
+function checkMaxLength(value, max) {
+    return value.length <= max;
+}
+
+function checkNumberPostitive(value) {
+    return parseInt(value) > 0;
 }
 
 function otherFieldValidation(selector) {
     // To validate name, address, ...
     if (!selector.value.trim()) {
-        showError(selector, 'Not be blank')
+        showError(selector, 'Not be blank');
     } else if (!checkMinLength(selector.value.trim(), 5)) {
-        showError(selector, 'At least 5 characters required')
+        showError(selector, 'At least 5 characters required');
     } else {
-        showSuccess(selector)
-        return true
+        showSuccess(selector);
+        return true;
     }
-    return false
+    return false;
 }
 
 function checkSelect(selector) {
     if(selector.selectedIndex <=0) {
-        showError(selector, 'Not be blank')
+        showError(selector, 'Not be blank');
     } else {
-        showSuccess(selector)
-        return true
+        showSuccess(selector);
+        return true;
     }
-    return false
+    return false;
 }
 
 function checkFileUpload(selector) {
