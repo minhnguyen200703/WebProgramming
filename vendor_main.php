@@ -8,9 +8,8 @@
         header("Location: ./www/index.php"); 
         exit();
     };
+
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -34,8 +33,8 @@
     <link rel="stylesheet" href="./assets/css/vendor.css">
 </head>
 <body>
-     <!-- Header section -->
-     <header>
+    <!-- Header section -->
+    <header>
 
             <!-- Logo -->
         <div class="brand">
@@ -74,65 +73,32 @@
             </ul>
         </nav>
     </header>
-    <!-- Main section -->
+
+            <!-- Main section -->
+
     <main>
 
-        <!-- Back to Vendor main section -->
-        <div class="vendor_back_to_main">
-            <a href="./vendor_main.php" class="vendor_back_to_main__btn"><i class="fa-solid fa-chevron-left"></i>Back</a>
+            <!-- Choosing section -->
+        <div class="vendor_main_container">
+            <button class="vendor_add_product__btn">
+                <a href="vendor_add_product.php"> Add product</a>
+            </button>
+            <button class="vendor_view_product__btn">
+                <a href="vendor_product.php"> View product</a>
+            </button>
         </div>
 
-
-        <h1>My Product</h1>
-
-        <table border=1px class="vendor_product_list">
-            <thead>
-                <th>Product Image</th>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Description</th>
-            </thead>
-
-            <tbody>
-                <!-- Insert data of each product for each row in the table <tbody> -->
-                <?php
-                    // Take the data out from product.json and decode 
-                    $products = json_decode(file_get_contents("./assets/storage/product.json"), true);
-
-                        // Check if array emtpy
-                    if (!empty($products)) {
-
-                            // If not empty
-                        // Loop each element in $products to take each data of each product 
-                        foreach($products as $product) {
-                            // Compare the username of who added the product with the current username
-                            if ($product['username'] == $_SESSION['user']['username']) {
-                                // If the same, take the data out and add new row; if not, next
-                            $image = $product['image'];
-                            $name = $product['name'];
-                            $price = $product['price'];
-                            $desc = $product['desc'];
-                            echo "<tr>";
-                            echo    "<td><img class=\"vendor_product__img\" src=\"./assets/product_img/$image\" alt=\"Product image\"></td>";
-                            echo "<td>$name</td>";
-                            echo "<td>$price</td>";
-                            echo "<td>$desc</td>";
-                            echo "</tr>";
-                }}} else {
-                            // If empty show No product added
-                        echo "<span class=\"vendor_no_product\"> No product added </span>";
-                    };
-                ?>
-
-            </tbody>
-
-        </table>
     </main>
+
+    <footer>
+
+
+    </footer>
 
     <script>
 
-                // Open the Accouunt setting subnav bar
-
+            // Open the Accouunt setting subnav bar
+            
         var avatarElement = document.querySelector('.nav_pc_item__avt');
         var accountSetting = document.querySelector('.account-setting-container');
 

@@ -1,11 +1,14 @@
 <?php
     session_start();
-    if(isset($_GET['cart'])){
-        $cart = $_GET['cart'];
-        $file = fopen("order.csv",$cart);
-        fclose("order.csv");
-        unset($cart);
+    ob_start();
+
+    // Check if logged in
+    
+    if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == false) {
+        header("Location: ./www/index.php"); 
+        exit();
     };
+
 ?>
 
 <!DOCTYPE html>
@@ -45,100 +48,169 @@
                     <a href="#" class="nav_pc_item__link">Policies</a>
                 </li>
                 <li class="nav_pc_item">
-                    <a href="#" class="nav_pc_item__link">Help</a>
+                    <img src="<?php echo $_SESSION['user']['avatar']?>" alt="" class="nav_pc_item__avt">
+                    <ul class="account-setting-container hide">
+                        <li>
+                            <h3>Hi <?php echo $_SESSION['user']['real_name'] ?></h3>
+                        </li>
+                        <li class="account-setting-item">
+                            <a href="my_account.php">My account</a>
+                        </li>
+                        <li class="account-setting-item">
+                            <a href="./www/index.php">Log out</a>
+                        </li>
+                    </ul>
                 </li>
-                <li class="nav_pc_item">
-                    <a href="#" class="nav_pc_item__link">Contact</a>
-                </li>
-                <li class="nav_pc_item">
-                    <a href="#" class="nav_pc_item__profile">
-                        <img src="./assets/img/user.png" alt="">
-                    </a>
+                <li>
+                    <h1><?php echo $_SESSION['user']['real_name'] ?></h1>
                 </li>
             </ul>
         </nav>
-
     </header>
 
-        <!-- Main -->
+        <!-- Main section -->
     <main>
+
+        <div class="main_header">
+            <!-- Back to cus_main -->
+            <div class="cus_back_to_main">
+                <a href="./cus_main.php" class="cus_back_to_main__btn"><i class="fa-solid fa-chevron-left"></i>Back</a>
+            </div>
+        </div>
+
+        <div class="cus_cart_container">
         <h2>Shopping cart</h2>
-        <form action="">
             <table border=1px class="cus_cart_list">
                     <thead>
+                        <th>No</th>
                         <th>Product Image</th>
                         <th>Name</th>
                         <th>Price</th>
                         <th>Quantity</th>
                         <th>Description</th>
+                        <th>Remove</th>
                     </thead>
 
                     <tbody class="cus_cart_body">  
 
                     </tbody>
             </table>
-            <input style="padding: 16px 24px; border: 1px solid #000;" type="submit" value="cart_add" name="cart_add">
-        </form>
-        <button class="checkout_btn">
-            Check out
-        </button>
-        <button class="reset_card">12312321</button>        
 
+            <div class="cus_cart_btn_container">
+                <button class="checkout_btn">
+                    Check out
+                </button>
+                
+                <button class="reset_card">
+                    Reset
+                </button>        
+            </div>
+        </div>
     </main>
 
     <script>
+        // The function to show cart data from LOCAL STORAGE
         showCart()
+
     function showCart() {
+        // Take the cartbody append to a variable, or the tbody of the table
         let cardBody = document.querySelector(".cus_cart_body")
         cardBody.innerHTML = "" 
 
+        // Get the data in variable cart in local storage
         let storage = localStorage.getItem('cart')
         if (storage) {
             cart = JSON.parse(storage)
-        } else {
+            
+        }
+        // If there is no product, annouce
+        else {
             cardBody.innerHTML += `<span>There is no product here</span>`
         }
-        cart.map(item => {
-            cardBody.innerHTML += `
-                <tr>
-                    <td><img src="${item.product.image}" alt="Product's image"></td>
-                    <td>${item.product.name}</td>
-                    <td>${item.product.price}</td>
-                    <td>${item.quantity}</td>
-                    <td>${item.product.detail}</td>
-                    <td>
-                        <button onclick="removeItem(${item.product.name})">Remove</button>
-                    </td>
-                </tr>
-            `
+
+        // Loop the cart to take all product
+        cart.forEach((product, index) => {
+            let productId = index
+            index++
+
+            // Append the product to the cardBody, or the tbody, as the forEach run
+        cardBody.innerHTML += `
+            <tr>
+                <td>${productId + 1}</td>
+                <td><img src="${product.product.image}" alt="Product's image"></td>
+                <td>${product.product.name}</td>
+                <td>${product.product.price}</td>
+                <td>${product.quantity}</td>
+                <td>${product.product.detail}</td>
+                <td>
+                    <a href="#" onclick="removeItem(${productId})">Remove</a>
+                </td>
+            </tr>
+        `
         })
+        
     };
-    let storage = localStorage.getItem('cart')
-    var order = []
+
+        // Get random value function
+    function random (maxValue) {
+        return Math.floor(Math.random() * maxValue)
+    }
+
+        // Send order function
     function orderSend () {
-        window.location.href = `http://localhost/WebProgramming/cus_main.php?cart=${storage}`
+            // Take the data from LOCAL STORAGE
+        let storage = (localStorage.getItem('cart'))
+            // Randomly take 1 value from the three value
+        let distributionHub = random(3)
+            // Redirect the url with all the information of the order: products, customer's username, customer's address, hub
+        window.location.href = `http://localhost/WebProgramming/cus_main.php?cart=${storage}&user=<?php echo $_SESSION['user']['username'] ?>&hub=${distributionHub}&address=<?php echo $_SESSION['user']['address'] ?>`
+            // Reset cart in LOCAL STORAGE
+        localStorage.removeItem('cart')
+            // Alert
         alert('Order placed. Thank you for your order!')
     }
     
+    // Remove selected item
+    function removeItem(id) {
+        // Take the data from LOCAL STORAGE
+        let storage = localStorage.getItem('cart')
+        if (storage) {
+            cart = JSON.parse(storage)}
+
+            // Remove the product with the given ID, aka index, in the order table
+        cart.splice(id, 1)
+        // Write the new cart into LOCAL STORAGE
+        localStorage.setItem('cart', JSON.stringify(cart))
+        // Run the show cart data to update
+        showCart()
+        }
+
+
+        // As the reset cart button clicked, remove all data in cart in LOCAL STORAGE
     document.querySelector(".reset_card").addEventListener("click", function () {
         localStorage.removeItem('cart')
         location.reload()
     })
 
-    function removeItem(name) {
-        let storage = localStorage.getItem('cart')
-        if (storage) {
-            cart = JSON.parse(storage)
-        cart = cart.filter(item => item.product.name != name)
-        localStorage.setItem('cart', JSON.stringify(cart))
-        // showCart(cart) 
-        }}
-
-    
-
     </script>
     <script>
+        // If the checkout is clicked, run orderSend function
             document.querySelector(".checkout_btn").addEventListener("click", orderSend)
     </script>
+
+
+    <script>
+                    // Open the Accouunt setting subnav bar
+        var avatarElement = document.querySelector('.nav_pc_item__avt');
+        var accountSetting = document.querySelector('.account-setting-container');
+
+        avatarElement.onclick = function() {
+            if (accountSetting.classList.contains('hide')) {
+                accountSetting.classList.remove('hide');
+            } else {
+                accountSetting.classList.add('hide');
+            }
+    }
+    </script>    
 </body>
 </html>
