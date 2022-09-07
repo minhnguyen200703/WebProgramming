@@ -1,0 +1,200 @@
+body {
+    background-color: #eef0f4;
+}
+
+h2 {
+    font-size: 2.4rem;
+    line-height: 2.8rem;
+    margin-bottom: 12px;
+}
+
+/* Header section */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 170px 8px 200px;
+    box-shadow: 0 8px 4px rgb(119 217 255 / 20%);
+    background-color: white;
+}
+
+nav {
+}
+
+.brand {
+    height: 46px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand__logo {
+    width: 46px;
+    height: 100%;
+    object-fit: cover;
+}
+
+.brand__text {
+    font-size: 2rem;
+    margin-left: 16px;
+    color: var(--dark_blue_color);
+    font-weight: 600;
+}
+
+.nav_pc_container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.nav_pc_item__link {
+    padding: 20px 30px;
+    font-size: 2rem;
+    line-height: 46px;
+}
+
+.nav_pc_item__link {
+    color: var(--dark_blue_color);
+    font-weight: 600;
+}
+
+.nav_pc_item__link:hover {
+    opacity: 0.7;
+}
+
+.nav_pc_item:last-child img {
+    width: 46px;
+    height: 46px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+main {
+    margin: 0 10%;
+}
+
+/* Biography section */
+.view_product,
+.biography {
+    padding: 8px 30px;
+    background-color: white;
+    margin: 90px 0;
+    border-radius: 12px;
+    box-shadow: rgb(0 0 0 / 6%) 1px 2px 4px;
+}
+
+.biography_content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.biography__intro {
+
+}
+
+.bioraphy__intro__rating {
+
+}
+
+.biography__sale_container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.biography__sale_item {
+    margin-left: 56px;
+    text-align: center;
+}
+
+.biography_title {
+    font-size: 1.8rem;
+}
+
+.biography_statistics {
+    font-size: 1.6rem;
+}
+
+/* View my products */
+.biography__header,
+.view_product__header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgb(175, 175, 175);
+}
+
+
+.view_product__header i {
+    width: 2rem;
+    height: 2rem;
+    text-align: center;
+    font-size: 2rem;
+    line-height: 2rem;
+    padding: 8px;
+    border-radius: 6px;
+    background-color: #f4f4f5;
+}
+
+.view_product__header i:hover {
+    background-color: #dbeafe;
+    color: #1d4ed8;
+    cursor: pointer;
+}
+
+table {
+    width: 100%;
+    font-size: 1.4rem;
+}
+
+th {
+    width: 25%;
+    text-align: initial;
+    padding: 12px 0;
+}
+
+tr {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 25%;
+}
+
+td {
+    padding: 12px 0;
+}
+
+/*  */
+#add_product_icon {
+    position: relative;
+}   
+
+#add_product_icon::after {
+    position: absolute;
+    content: "Add new products";
+    width: 100px;
+    height: 50px;
+    background-color: red;
+    top: -60px;
+    left: -50%;
+    opacity: 0;
+    transition: 0.5s;
+    color: white;
+    font-size: 1.4rem;
+}
+
+#add_product_icon::before {
+    position: absolute;
+    content: "";
+    width: 100px;
+    height: 50px;
+    background-color: blue;
+    top: -10px;
+    left: -5%;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+#add_product_icon:hover::before,
+#add_product_icon:hover::after {
+    opacity: 1;
+}

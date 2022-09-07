@@ -1,0 +1,169 @@
+main {
+    padding-top: 80px;
+    background-color: #f4f4f5;
+    height: 100vh;
+}
+
+.biography_content {
+    background-color: white;
+    margin: 0px 34% 20px;
+    padding: 36px 60px 50px;
+    border-radius: 10px;
+    box-shadow: rgb(99 99 99 / 11%) 0px 2px 8px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+
+.biography_content_new {
+    width: 100%;
+}
+
+.biography_content__avatar {
+    width: 100%;
+    text-align: center;
+}
+
+.biography_content__avatar img {
+    border: 10px solid #ccc;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.biography_content__username {
+    width: 100%;
+    text-align: center;
+    font-size: 2.4rem;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 28px;
+    color: black;
+}
+
+.biography_content__container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.biography_content__item {
+    font-size: 1.6rem;
+    padding: 12px 0;
+    width: 100%;
+    text-align: center;
+}
+
+.biography_content__item__label {
+    font-weight: 600;
+}
+
+.biography_content__item__info {
+    font-weight: 400;
+}
+
+.biography_content__icon  i {
+    font-size: 2rem;
+    color: #535353;
+}
+
+.biography_content__icon i:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.cancel_change_btn {
+
+}
+
+.biography_content_old {
+    transition: 0.2s;
+}
+
+.biography_content__icon {
+    text-align: right;
+}
+
+
+/* Form elements */
+.form_field {
+    padding-top: 28px;
+}
+
+select {
+    padding: 10px 14px;
+    font-size: 1.4rem;
+}
+
+input[type = 'text'] {
+    width: calc(100% - 36% - 40px - 4px);
+}
+
+select {
+    width: calc(100% - 36% - 4px);
+}
+
+
+/*  */
+
+.avt_block {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 100px;
+    font-size: 50px;
+    color: white;
+    display: block;
+    object-fit: cover;
+    border: 2px solid gray;
+    position: relative;
+    transition: 0.4s;
+    filter: brightness(50%);
+}
+
+.avt_block:hover {
+    cursor: pointer;
+}
+
+.edit_btn {
+    display: inline-block;
+}
+
+.avt_block {
+    position: relative;
+}
+
+.edit_btn i {
+    content: "Edit";
+    font-size: 2rem;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.edit_btn i:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.form_field.avatar {
+    text-align: center;
+}
+
+.form_field.avatar img {
+    margin: 0 auto;
+}
+
+.form_field.avatar label {
+    position: relative;
+}
+
+.avt_block {
+    width: 100px;
+    height: 100px;
+}

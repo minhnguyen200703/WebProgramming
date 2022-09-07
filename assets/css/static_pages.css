@@ -1,0 +1,36 @@
+main {
+    margin: 80px 12% 60px;
+}
+
+h1 {
+    font-size: 3.2rem;
+    margin-bottom: 40px;
+}
+
+h3 {
+    font-size: 1.6rem;
+    line-height: 2rem;
+}
+
+ol {
+    list-style-type: decimal; 
+    list-style-position: inside; 
+}
+
+ol li {
+    font-size: 1.5rem;
+    line-height: 2.4rem;
+    text-align: justify;
+    margin: 12px 0;
+}
+
+.ask_for_support {
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+
+.ask_for_support a {
+    color: var(--blue_color);
+    text-decoration: underline;
+}
+
